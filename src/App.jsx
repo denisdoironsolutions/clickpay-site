@@ -46,7 +46,6 @@ const App = () => {
   };
 
   // --- Shared Components ---
-
   const Header = () => (
     <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-slate-900/95 backdrop-blur-md py-3 shadow-lg' : 'bg-transparent py-5'}`}>
       <div className="container mx-auto px-6 flex justify-between items-center">
