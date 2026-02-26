@@ -29,9 +29,9 @@ const App = () => {
 
   useEffect(() => {
     const path = window.location.pathname;
-    if (path === '/paymentupdate') {
+    if (path.includes('paymentupdate')) {
       setActivePage('payment');
-    } else if (path === '/emailsetup') { // Add this check
+    } else if (path.includes('emailsetup')) {
       setActivePage('emailsetup');
     }
     const handleScroll = () => setScrolled(window.scrollY > 20);
