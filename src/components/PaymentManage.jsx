@@ -1,50 +1,56 @@
 import React, { useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 
 const AuthorizeNetRelay = () => {
   const formRef = useRef(null);
-  
-  // Get params from URL: ?t=TOKEN&m=P (or T)
-  const queryParams = new URLSearchParams(window.location.search);
-  const token = queryParams.get('t');
-  const mode = queryParams.get('m'); // 'P' for Production, 'T' for Test
+  const location = useLocation();
 
-  // Determine the correct Authorize.Net endpoint
-  const postUrl = mode?.toUpperCase() === 'P' 
-    ? "https://accept.authorize.net/profile/manage" 
-    : "https://test.authorize.net/profile/manage";
+  const params = new URLSearchParams(location.search);
+  const token = params.get('t');
+  const mode = params.get('m');
+
+  const isProduction = mode?.toUpperCase() === 'P';
+
+  const postUrl = isProduction
+    ? "https://accept.authorize.net/customer/manage"
+    : "https://test.authorize.net/customer/manage";
 
   useEffect(() => {
-    // Only auto-submit if we have a token and the form is ready
-    if (token && formRef.current) {
-      formRef.current.submit();
-    }
+    if (!token) return;
+
+    // Ensures DOM is fully committed before submit
+    requestAnimationFrame(() => {
+      formRef.current?.submit();
+    });
   }, [token]);
 
   if (!token) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-slate-900 text-red-400 font-mono">
-        <div className="p-8 border border-red-900/50 bg-red-950/20 rounded-xl">
-          Error: Invalid or missing security token.
-        </div>
+      <div style={{ padding: 40, textAlign: 'center' }}>
+        <h2>Invalid or expired link.</h2>
+        <p>Please request a new secure payment invitation.</p>
       </div>
     );
   }
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-slate-900 text-white">
-      <div className="text-center animate-pulse">
-        <h2 className="text-2xl font-bold mb-4">Redirecting to Secure {mode === 'P' ? 'Live' : 'Test'} Portal...</h2>
-        <p className="text-slate-400">Please do not refresh the page.</p>
-      </div>
+    <div style={{ textAlign: 'center', marginTop: '120px', fontFamily: 'sans-serif' }}>
+      <h2>Connecting to Secure Payment Portal…</h2>
+      <p>Please do not refresh the page.</p>
 
-      {/* Hidden form for the POST request */}
-      <form 
-        ref={formRef} 
-        method="POST" 
-        action={postUrl}
-      >
+      <form ref={formRef} method="POST" action={postUrl}>
         <input type="hidden" name="token" value={token} />
       </form>
+
+      <noscript>
+        <div style={{ marginTop: 20 }}>
+          <p>JavaScript is disabled. Click below to continue.</p>
+          <form method="POST" action={postUrl}>
+            <input type="hidden" name="token" value={token} />
+            <button type="submit">Manage Payment Information</button>
+          </form>
+        </div>
+      </noscript>
     </div>
   );
 };

@@ -1,85 +1,70 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  ShieldCheck, 
-  Zap, 
-  RefreshCcw, 
-  ShoppingCart, 
-  ChevronRight, 
-  Lock, 
-  Database, 
-  ArrowRight, 
-  CheckCircle2, 
-  Menu, 
+import { Routes, Route, useNavigate } from "react-router-dom";
+import {
+  ShieldCheck,
+  Zap,
+  ShoppingCart,
+  Lock,
+  Database,
+  ArrowRight,
+  CheckCircle2,
+  Menu,
   X,
   CreditCard,
   Layers,
-  FileText,
-  Mail,
-  Phone,
   Server,
-  Code
+  Code,
+  Terminal, 
+  Scale, 
+  HardDrive, 
+  Eye, 
+  TrendingUp, 
+  Landmark,
+  Clock
 } from 'lucide-react';
+
 import PaymentManage from './components/PaymentManage';
 import EmailSetupHelp from './components/EmailSetupHelp';
 
 const App = () => {
-  const [activePage, setActivePage] = useState('home');
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const path = window.location.pathname;
-    if (path.includes('paymentupdate')) {
-      setActivePage('payment');
-    } else if (path.includes('emailsetup')) {
-      setActivePage('emailsetup');
-    }
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navigate = (page) => {
-    setActivePage(page);
-    setIsMenuOpen(false);
-    window.scrollTo(0, 0);
-  };
-
-  // --- Shared Components ---
   const Header = () => (
     <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-slate-900/95 backdrop-blur-md py-3 shadow-lg' : 'bg-transparent py-5'}`}>
       <div className="container mx-auto px-6 flex justify-between items-center">
-        <div className="flex items-center space-x-2 cursor-pointer" onClick={() => navigate('home')}>
+        <div
+          className="flex items-center space-x-2 cursor-pointer"
+          onClick={() => navigate('/')}
+        >
           <div className="bg-teal-500 p-1.5 rounded-lg">
             <CreditCard className="text-white w-6 h-6" />
           </div>
-          <span className="text-2xl font-bold tracking-tight text-white">ClickPay<span className="text-teal-400">.</span></span>
+          <span className="text-2xl font-bold tracking-tight text-white">
+            ClickPay<span className="text-teal-400">.</span>
+          </span>
         </div>
 
         <div className="hidden lg:flex items-center space-x-8 text-sm font-medium text-slate-300">
-          <button onClick={() => navigate('features')} className="hover:text-teal-400 transition-colors">Features</button>
-          <button onClick={() => navigate('integration')} className="hover:text-teal-400 transition-colors">SAP B1</button>
-          <button onClick={() => navigate('magento')} className="hover:text-teal-400 transition-colors">Magento</button>
-          <button onClick={() => navigate('migration')} className="hover:text-teal-400 transition-colors">Migration</button>
-          <button onClick={() => navigate('security')} className="hover:text-teal-400 transition-colors">Security</button>
-          <button onClick={() => navigate('pricing')} className="hover:text-teal-400 transition-colors">Pricing</button>
+          <button onClick={() => navigate('/features')}>Features</button>
+          <button onClick={() => navigate('/integration')}>SAP B1</button>
+          <button onClick={() => navigate('/magento')}>Magento</button>
+          <button onClick={() => navigate('/migration')}>Migration</button>
+          <button onClick={() => navigate('/security')}>Security</button>
+          <button onClick={() => navigate('/pricing')}>Pricing</button>
         </div>
 
         <button className="lg:hidden text-white" onClick={() => setIsMenuOpen(!isMenuOpen)}>
           {isMenuOpen ? <X /> : <Menu />}
         </button>
       </div>
-
-      {isMenuOpen && (
-        <div className="lg:hidden absolute top-full left-0 w-full bg-slate-900 border-t border-slate-800 p-6 flex flex-col space-y-4 shadow-2xl">
-          <button onClick={() => navigate('features')} className="text-left py-2 text-slate-300 border-b border-slate-800">Features</button>
-          <button onClick={() => navigate('integration')} className="text-left py-2 text-slate-300 border-b border-slate-800">SAP Integration</button>
-          <button onClick={() => navigate('magento')} className="text-left py-2 text-slate-300 border-b border-slate-800">Magento</button>
-          <button onClick={() => navigate('migration')} className="text-left py-2 text-slate-300 border-b border-slate-800">Migration</button>
-          <button onClick={() => navigate('security')} className="text-left py-2 text-slate-300 border-b border-slate-800">Security</button>
-          <button onClick={() => navigate('pricing')} className="text-left py-2 text-slate-300">Pricing</button>
-        </div>
-      )}
     </nav>
   );
 
@@ -98,18 +83,18 @@ const App = () => {
         <div>
           <h4 className="text-white font-bold mb-4">Solution</h4>
           <ul className="space-y-2 text-sm">
-            <li><button onClick={() => navigate('features')} className="hover:text-teal-400">Core Features</button></li>
-            <li><button onClick={() => navigate('integration')} className="hover:text-teal-400">SAP B1 SQL & HANA</button></li>
-            <li><button onClick={() => navigate('magento')} className="hover:text-teal-400">Magento Plugin</button></li>
-            <li><button onClick={() => navigate('security')} className="hover:text-teal-400">Security & PCI</button></li>
+            <li><button onClick={() => navigate('/features')} className="hover:text-teal-400">Core Features</button></li>
+            <li><button onClick={() => navigate('/integration')} className="hover:text-teal-400">SAP B1 SQL & HANA</button></li>
+            <li><button onClick={() => navigate('/magento')} className="hover:text-teal-400">Magento Plugin</button></li>
+            <li><button onClick={() => navigate('/security')} className="hover:text-teal-400">Security & PCI</button></li>
           </ul>
         </div>
         <div>
           <h4 className="text-white font-bold mb-4">Resources</h4>
           <ul className="space-y-2 text-sm">
-            <li><button onClick={() => navigate('home')} className="hover:text-teal-400">Documentation</button></li>
-            <li><button onClick={() => navigate('home')} className="hover:text-teal-400">FAQ</button></li>
-            <li><button onClick={() => navigate('migration')} className="hover:text-teal-400">Migration Guide</button></li>
+            <li><button onClick={() => navigate('/home')} className="hover:text-teal-400">Documentation</button></li>
+            <li><button onClick={() => navigate('/home')} className="hover:text-teal-400">FAQ</button></li>
+            <li><button onClick={() => navigate('/migration')} className="hover:text-teal-400">Migration Guide</button></li>
           </ul>
         </div>
         
@@ -187,7 +172,11 @@ const App = () => {
           </div>
         </div>
       </div>
+       {/* Full-width Dashboard Section */}
+      <ClickPayShowcase />
     </div>
+
+   
   );
 
   const Integration = () => (
@@ -218,7 +207,7 @@ const App = () => {
              <div className="text-xs font-mono text-teal-400 space-y-1 overflow-x-auto">
                 <p className="opacity-50">// ClickPay Transaction Flow</p>
                 <p>POST /v1/payment/authorization {'{ "amount": 1250.00 }'}</p>
-                <p className="text-white">{"<"}--- Response: Approved (AuthID: 99120) ---</p>
+                <p className="text-white">{"<"}-- Response: Approved (AuthID: 99120) --</p>
                 <p className="text-slate-500">Writing result to SAP UDO @CLICK_PAY_LOG...</p>
                 <p className="text-teal-500">Sales Order 1022 updated with TokenID: CIM_8822</p>
              </div>
@@ -326,26 +315,227 @@ const App = () => {
     </div>
   );
 
-  const renderPage = () => {
-    switch(activePage) {
-      case 'features': return <Features />;
-      case 'integration': return <Integration />;
-      case 'magento': return <Magento />;
-      case 'migration': return <Migration />;
-      case 'security': return <Security />;
-      case 'pricing': return <Pricing />;
-      case 'payment': return <PaymentManage />;
-      case 'emailsetup': return <EmailSetupHelp />;
-      default: return <Home />;
-    }
+  /**
+   * ClickPay Marketing Showcase Section
+   * Use these components inside your main landing page.
+   * Includes designated placeholders for screenshots and ROI breakdowns.
+   */
+
+  const ROIStat = ({ label, value }) => (
+    <div className="flex flex-col border-l-2 border-teal-500/30 pl-4 py-1">
+      <span className="text-teal-400 font-black text-xl leading-none">{value}</span>
+      <span className="text-slate-500 text-[10px] uppercase font-bold tracking-wider mt-1">{label}</span>
+    </div>
+  );
+
+  const MarketingShowcase = ({
+  title,
+  subtitle,
+  icon,
+  features,
+  roi,
+  imageSrc,
+  reversed = false
+}) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <>
+      <div
+        className={`flex flex-col ${
+          reversed ? "lg:flex-row-reverse" : "lg:flex-row"
+        } items-center gap-16 py-20 border-b border-slate-800 last:border-0`}
+      >
+        {/* Text Context */}
+        <div className="flex-1 space-y-8">
+          <div className="inline-flex p-3 rounded-2xl bg-teal-500/10 text-teal-400 border border-teal-500/20 shadow-lg shadow-teal-500/5">
+            {icon}
+          </div>
+
+          <div>
+            <h3 className="text-3xl md:text-4xl font-bold text-white tracking-tight mb-4">
+              {title}
+            </h3>
+            <p className="text-slate-400 text-lg leading-relaxed font-medium">
+              {subtitle}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {features.map((f, i) => (
+              <div
+                key={i}
+                className="flex items-center text-slate-300 text-sm font-semibold"
+              >
+                <CheckCircle2 className="text-teal-500 w-4 h-4 mr-3 shrink-0" />
+                {f}
+              </div>
+            ))}
+          </div>
+
+          <div className="pt-6 border-t border-slate-800 flex flex-wrap gap-8">
+            {roi.map((stat, i) => (
+              <ROIStat key={i} label={stat.label} value={stat.value} />
+            ))}
+          </div>
+        </div>
+
+        {/* Screenshot Visual */}
+        <div className="flex-1 w-full">
+          <div className="rounded-[2.5rem] overflow-hidden border border-slate-700 shadow-2xl inline-block">
+            
+            <img
+              src={imageSrc}
+              alt={title}
+              onClick={() => setIsOpen(true)}
+              className="w-full h-auto cursor-zoom-in transition-transform duration-500 hover:scale-[1.02]"
+            />
+
+          </div>
+        </div>
+      </div>
+
+      {/* Modal */}
+      {isOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-6"
+          onClick={() => setIsOpen(false)}
+        >
+          <img
+            src={imageSrc}
+            alt={title}
+            className="max-w-6xl w-full max-h-[90vh] object-contain rounded-2xl shadow-2xl"
+          />
+        </div>
+      )}
+    </>
+  );
+};
+
+  const ClickPayShowcase = () => {
+    const [isOpen, setIsOpen] = useState(false);
+    return (
+      <section className="bg-slate-900 py-24 px-6 overflow-hidden">
+        <div className="container mx-auto max-w-7xl">
+          <div className="text-center max-w-3xl mx-auto mb-20">
+            <h2 className="text-teal-400 text-xs font-black uppercase tracking-[0.3em] mb-4">
+              Enterprise Visibility
+            </h2>
+            <h1 className="text-4xl md:text-6xl font-black text-white tracking-tighter mb-6">
+              Four Dashboards. <br />
+              <span className="text-slate-500 text-3xl md:text-5xl">
+                Total Financial Clarity.
+              </span>
+            </h1>
+            <p className="text-slate-400 text-lg font-medium">
+              We don't just process cards; we provide the analytics layer SAP Business One was missing.
+            </p>
+          </div>
+
+          {/* 1. PAYMENT HUB */}
+          <MarketingShowcase
+            title="The Payment Hub"
+            subtitle="Empower your clerks with a high-velocity command center. Manage every transaction lifecycle state without leaving a single screen."
+            icon={<Zap size={28} />}
+            imageSrc="/PaymentHub.png"
+            features={[
+              "One-Click Batch Voids",
+              "Shipping-Synced Captures",
+              "Partial Shipment Support",
+              "Instant Status Sync"
+            ]}
+            roi={[
+              { value: "Up to 40%", label: "Faster Operations" },
+              { value: "Greatly Reduced", label: "Manual Entry Errors" }
+            ]}
+          />
+
+          {/* 2. SECURITY AUDIT */}
+          <MarketingShowcase
+            title="Security & Activity Monitor"
+            subtitle="Centralized visibility into payment-related user activity and gateway response data — providing operational transparency without expanding PCI scope."
+            icon={<Terminal size={28} />}
+            imageSrc="/AuditHub.png"
+            reversed={true}
+            features={[
+              "User-Level Transaction Activity Logs",
+              "IP & Location Capture (Gateway & Server-Level)",
+              "Tokenized Payment Architecture",
+              "Gateway Response & Risk Flag Visibility"
+            ]}
+            roi={[
+              { value: "Improved", label: "Audit Visibility" },
+              { value: "Enhanced", label: "Risk Awareness" }
+            ]}
+          />
+
+          {/* 3. SETTLEMENT HUB */}
+          <MarketingShowcase
+            title="Assisted Gateway Settlement"
+            subtitle="Synchronize settled gateway batches with SAP and generate G/L-ready journal entries — eliminating manual reconciliation steps without requiring bank integration."
+            icon={<Scale size={28} />}
+            imageSrc="/SettlementHub.png"
+            features={[
+              "Gateway-to-SAP Batch Synchronization",
+              "Automated Fee Allocation (Gateway-Reported)",
+              "Batch Variance Detection & Alerts",
+              "Journal Entry Auto-Generation"
+            ]}
+            roi={[
+              { value: "Reduced", label: "Manual Reconciliation Time" }
+            ]}
+          />
+
+          {/* 4. CIM HEALTH */}
+          <MarketingShowcase
+            title="Token & Vault Management"
+            subtitle="Monitor stored payment profiles, reduce preventable declines, and maintain data integrity within your gateway token vault."
+            icon={<HardDrive size={28} />}
+            imageSrc="/CIMVaultHub.png"
+            reversed={true}
+            features={[
+              "Proactive Expiry Monitoring",
+              "Enhanced Transaction Data Support (Where Eligible)",
+              "Customer Profile Status Tracking",
+              "Token Integrity & Validation Checks"
+            ]}
+            roi={[
+              { value: "Reduced", label: "Preventable Declines" },
+              { value: "Improved", label: "Token Lifecycle Visibility" }
+            ]}
+          />
+
+          {/* ROI Disclaimer */}
+          <p className="text-[11px] text-slate-500 mt-16 leading-relaxed text-center max-w-4xl mx-auto">
+            All performance metrics, ROI projections, and efficiency estimates are illustrative in nature and provided for informational purposes only. They are based on internal analysis and do not constitute guarantees of future results.
+            Actual performance may vary materially depending on implementation approach, processor agreements, transaction volume, industry segment, and operational controls.
+          </p>
+        </div>
+        
+      </section>
+    );
   };
 
+  
   return (
     <div className="min-h-screen bg-slate-900 text-slate-100 font-sans">
       <Header />
-      {/* If it's the payment page, we might want to hide the footer/header for a cleaner look */}
-      {renderPage()}
-      {activePage !== 'payment' && <Footer />}
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/features" element={<Features />} />
+        <Route path="/integration" element={<Integration />} />
+        <Route path="/magento" element={<Magento />} />
+        <Route path="/migration" element={<Migration />} />
+        <Route path="/security" element={<Security />} />
+        <Route path="/pricing" element={<Pricing />} />
+        <Route path="/paymentupdate" element={<PaymentManage />} />
+        <Route path="/emailsetup" element={<EmailSetupHelp />} />
+      </Routes>
+
+      <Footer />
+
+      
     </div>
   );
 };
