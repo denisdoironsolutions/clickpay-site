@@ -17,14 +17,14 @@ import {
   Terminal, 
   Scale, 
   HardDrive, 
-  Eye, 
-  TrendingUp, 
-  Landmark,
-  Clock
+  DollarSign,
+  Shield,
+  Cpu
 } from 'lucide-react';
 
 import PaymentManage from './components/PaymentManage';
 import EmailSetupHelp from './components/EmailSetupHelp';
+import WorkFlow from './components/workflow_diagram';
 
 const App = () => {
   const navigate = useNavigate();
@@ -55,6 +55,7 @@ const App = () => {
         <div className="hidden lg:flex items-center space-x-8 text-sm font-medium text-slate-300">
           <button onClick={() => navigate('/features')}>Features</button>
           <button onClick={() => navigate('/integration')}>SAP B1</button>
+          <button onClick={() => navigate('/workflow')}>Workflows</button>
           <button onClick={() => navigate('/magento')}>Magento</button>
           <button onClick={() => navigate('/migration')}>Migration</button>
           <button onClick={() => navigate('/security')}>Security</button>
@@ -149,73 +150,294 @@ const App = () => {
   );
 
   const Features = () => (
-    <div className="pt-32 pb-24 px-6 animate-in fade-in duration-500 bg-slate-900">
-      <div className="container mx-auto max-w-6xl">
-        <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-6">Designed for Enterprise Complexity</h1>
-        <p className="text-slate-400 text-lg mb-12">ClickPay handles the specific, high-friction scenarios of B2B commerce directly inside your ERP.</p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <div className="bg-slate-800/50 p-10 rounded-3xl border border-slate-700">
-            <h3 className="text-2xl font-bold text-white mb-6 flex items-center"><Zap className="mr-3 text-teal-400" /> Pre-Authorization</h3>
-            <ul className="space-y-4 text-slate-300">
-              <li className="flex items-start"><CheckCircle2 className="text-teal-500 mr-2 shrink-0" /> Auth-Only logic: Lock funds at order entry.</li>
-              <li className="flex items-start"><CheckCircle2 className="text-teal-500 mr-2 shrink-0" /> Expiration tracking based on processor-specific rules.</li>
-              <li className="flex items-start"><CheckCircle2 className="text-teal-500 mr-2 shrink-0" /> Intelligent re-authorization for aging sales orders.</li>
-            </ul>
-          </div>
-          <div className="bg-slate-800/50 p-10 rounded-3xl border border-slate-700">
-            <h3 className="text-2xl font-bold text-white mb-6 flex items-center"><Layers className="mr-3 text-blue-400" /> Invoice & Capture</h3>
-            <ul className="space-y-4 text-slate-300">
-              <li className="flex items-start"><CheckCircle2 className="text-blue-500 mr-2 shrink-0" /> Prior-Auth Capture: Single-click settlement on A/R Invoice.</li>
-              <li className="flex items-start"><CheckCircle2 className="text-blue-500 mr-2 shrink-0" /> Level 3 Data: Qualify for lower interchange rates automatically.</li>
-              <li className="flex items-start"><CheckCircle2 className="text-blue-500 mr-2 shrink-0" /> Partial captures support for multi-warehouse split shipments.</li>
-            </ul>
-          </div>
+  <div className="pt-32 pb-24 px-6 animate-in fade-in duration-500 bg-slate-900">
+    <div className="container mx-auto max-w-6xl">
+      <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-6">
+        Built for Enterprise Revenue Operations
+      </h1>
+      <p className="text-slate-400 text-lg mb-12">
+        ClickPay streamlines B2B payment workflows inside SAP Business One — helping protect revenue, reduce payment friction, and automate key payment operations directly within the ERP.
+      </p>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+
+        {/* PRE-AUTH */}
+        <div className="bg-slate-800/50 p-10 rounded-3xl border border-slate-700">
+          <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
+            <Zap className="mr-3 text-teal-400" /> Revenue Protection
+          </h3>
+          <ul className="space-y-4 text-slate-300">
+            <li className="flex items-start">
+              <CheckCircle2 className="text-teal-500 mr-2 shrink-0" />
+              Secure payment authorization at order entry using intelligent pre-authorization workflows.
+            </li>
+            <li className="flex items-start">
+              <CheckCircle2 className="text-teal-500 mr-2 shrink-0" />
+              Helps prevent fulfillment of orders with expired or insufficient authorizations.
+            </li>
+            <li className="flex items-start">
+              <CheckCircle2 className="text-teal-500 mr-2 shrink-0" />
+              Supports automated re-authorization for long fulfillment cycles and backorders.
+            </li>
+            <li className="flex items-start">
+              <CheckCircle2 className="text-teal-500 mr-2 shrink-0" />
+              Reduces failed captures caused by expired authorization holds.
+            </li>
+          </ul>
         </div>
+
+        {/* CAPTURE */}
+        <div className="bg-slate-800/50 p-10 rounded-3xl border border-slate-700">
+          <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
+            <Layers className="mr-3 text-blue-400" /> Automated Cash Collection
+          </h3>
+          <ul className="space-y-4 text-slate-300">
+            <li className="flex items-start">
+              <CheckCircle2 className="text-blue-500 mr-2 shrink-0" />
+              Supports automatic capture of payments when invoices are created.
+            </li>
+            <li className="flex items-start">
+              <CheckCircle2 className="text-blue-500 mr-2 shrink-0" />
+              Designed for complex fulfillment scenarios including partial shipments and multi-warehouse orders.
+            </li>
+            <li className="flex items-start">
+              <CheckCircle2 className="text-blue-500 mr-2 shrink-0" />
+              Reduces manual payment handling for finance teams.
+            </li>
+            <li className="flex items-start">
+              <CheckCircle2 className="text-blue-500 mr-2 shrink-0" />
+              Helps accelerate cash collection by capturing funds at shipment.
+            </li>
+          </ul>
+        </div>
+
+        {/* COST REDUCTION */}
+        <div className="bg-slate-800/50 p-10 rounded-3xl border border-slate-700">
+          <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
+            <DollarSign className="mr-3 text-green-400" /> Lower Payment Processing Costs
+          </h3>
+          <ul className="space-y-4 text-slate-300">
+            <li className="flex items-start">
+              <CheckCircle2 className="text-green-500 mr-2 shrink-0" />
+              Level 3 transaction data can be included automatically to help qualify for lower interchange rates where supported.
+            </li>
+            <li className="flex items-start">
+              <CheckCircle2 className="text-green-500 mr-2 shrink-0" />
+              Reduces the likelihood of duplicate authorizations and unnecessary gateway fees.
+            </li>
+            <li className="flex items-start">
+              <CheckCircle2 className="text-green-500 mr-2 shrink-0" />
+              Optimizes authorization and capture timing to improve payment efficiency.
+            </li>
+          </ul>
+        </div>
+
+        {/* FINANCIAL CONTROLS */}
+        <div className="bg-slate-800/50 p-10 rounded-3xl border border-slate-700">
+          <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
+            <Shield className="mr-3 text-purple-400" /> Financial Controls & Auditability
+          </h3>
+          <ul className="space-y-4 text-slate-300">
+            <li className="flex items-start">
+              <CheckCircle2 className="text-purple-500 mr-2 shrink-0" />
+              Maintains a detailed audit trail of authorizations, captures, refunds, and voids.
+            </li>
+            <li className="flex items-start">
+              <CheckCircle2 className="text-purple-500 mr-2 shrink-0" />
+              Helps prevent duplicate captures and common payment processing errors.
+            </li>
+            <li className="flex items-start">
+              <CheckCircle2 className="text-purple-500 mr-2 shrink-0" />
+              Supports approval workflows for large or high-risk transactions.
+            </li>
+            <li className="flex items-start">
+              <CheckCircle2 className="text-purple-500 mr-2 shrink-0" />
+              Includes safeguards designed to handle gateway failures and retry scenarios.
+            </li>
+          </ul>
+        </div>
+
+        {/* ERP INTEGRATION */}
+        <div className="bg-slate-800/50 p-10 rounded-3xl border border-slate-700">
+          <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
+            <Database className="mr-3 text-orange-400" /> Native SAP Integration
+          </h3>
+          <ul className="space-y-4 text-slate-300">
+            <li className="flex items-start">
+              <CheckCircle2 className="text-orange-500 mr-2 shrink-0" />
+              Embedded directly into SAP Business One workflows.
+            </li>
+            <li className="flex items-start">
+              <CheckCircle2 className="text-orange-500 mr-2 shrink-0" />
+              Eliminates the need for external payment portals or disconnected systems.
+            </li>
+            <li className="flex items-start">
+              <CheckCircle2 className="text-orange-500 mr-2 shrink-0" />
+              Works with Sales Orders, Deliveries, and A/R Invoices.
+            </li>
+            <li className="flex items-start">
+              <CheckCircle2 className="text-orange-500 mr-2 shrink-0" />
+              Provides real-time payment visibility within the ERP.
+            </li>
+          </ul>
+        </div>
+
+        {/* OPERATIONS */}
+        <div className="bg-slate-800/50 p-10 rounded-3xl border border-slate-700">
+          <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
+            <Cpu className="mr-3 text-cyan-400" /> Automated Payment Operations
+          </h3>
+          <ul className="space-y-4 text-slate-300">
+            <li className="flex items-start">
+              <CheckCircle2 className="text-cyan-500 mr-2 shrink-0" />
+              Background worker processes captures and retry operations automatically.
+            </li>
+            <li className="flex items-start">
+              <CheckCircle2 className="text-cyan-500 mr-2 shrink-0" />
+              Designed to recover from gateway interruptions or temporary ERP issues.
+            </li>
+            <li className="flex items-start">
+              <CheckCircle2 className="text-cyan-500 mr-2 shrink-0" />
+              Provides centralized monitoring of payment activity.
+            </li>
+          </ul>
+        </div>
+
       </div>
-       {/* Full-width Dashboard Section */}
-      <ClickPayShowcase />
     </div>
 
-   
-  );
+    <ClickPayShowcase />
+  </div>
+);
 
   const Integration = () => (
-    <div className="pt-32 pb-24 px-6 animate-in fade-in duration-500 bg-slate-900">
-      <div className="container mx-auto max-w-6xl">
-        <h1 className="text-4xl font-extrabold text-white mb-6">Architectural Overview</h1>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mt-12">
-          <div className="space-y-8">
-            <div>
-              <h3 className="text-xl font-bold text-teal-400 mb-4 flex items-center"><Server className="mr-2" /> Database Layer</h3>
-              <p className="text-slate-400 leading-relaxed">ClickPay supports both Microsoft SQL Server and SAP HANA. We utilize User Defined Objects (UDO) to store configuration and transaction metadata safely within your company database.</p>
-            </div>
-            <div>
-              <h3 className="text-xl font-bold text-teal-400 mb-4 flex items-center"><Code className="mr-2" /> Native SDK Integration</h3>
-              <p className="text-slate-400 leading-relaxed">The add-on is built on the SAP Business One SDK, respecting the DI-API and Service Layer protocols for data integrity and performance.</p>
-            </div>
-            <div className="p-6 bg-slate-800 rounded-2xl border border-slate-700">
-              <h4 className="text-white font-bold mb-2">Technical Summary</h4>
-              <ul className="text-xs text-slate-400 space-y-2">
-                <li>• Unified experience for SQL & HANA versions</li>
-                <li>• No third-party API middle-men</li>
-                <li>• Supports multi-currency business partners</li>
-                <li>• Immutable transaction audit logging</li>
-              </ul>
-            </div>
+  <div className="pt-32 pb-24 px-6 animate-in fade-in duration-500 bg-slate-900">
+    <div className="container mx-auto max-w-6xl">
+      <h1 className="text-4xl font-extrabold text-white mb-6">
+        Architectural Overview
+      </h1>
+
+      <p className="text-slate-400 max-w-3xl leading-relaxed">
+        ClickPay is designed as a native SAP Business One extension that integrates
+        directly with ERP workflows while maintaining clear separation between
+        payment processing, transaction logging, and financial document management.
+      </p>
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mt-12">
+
+        {/* LEFT COLUMN */}
+        <div className="space-y-10">
+
+          {/* DATABASE */}
+          <div>
+            <h3 className="text-xl font-bold text-teal-400 mb-4 flex items-center">
+              <Server className="mr-2" /> Database Layer
+            </h3>
+            <p className="text-slate-400 leading-relaxed">
+              ClickPay operates directly within the SAP Business One company
+              database. Configuration and transaction metadata are stored using
+              User Defined Tables and User Defined Objects, ensuring that payment
+              state remains fully visible within the ERP environment.
+            </p>
           </div>
-          <div className="bg-slate-950 p-8 rounded-3xl border border-slate-800 shadow-2xl">
-             <div className="text-xs font-mono text-teal-400 space-y-1 overflow-x-auto">
-                <p className="opacity-50">// ClickPay Transaction Flow</p>
-                <p>POST /v1/payment/authorization {'{ "amount": 1250.00 }'}</p>
-                <p className="text-white">{"<"}-- Response: Approved (AuthID: 99120) --</p>
-                <p className="text-slate-500">Writing result to SAP UDO @CLICK_PAY_LOG...</p>
-                <p className="text-teal-500">Sales Order 1022 updated with TokenID: CIM_8822</p>
-             </div>
+
+          {/* SDK */}
+          <div>
+            <h3 className="text-xl font-bold text-teal-400 mb-4 flex items-center">
+              <Code className="mr-2" /> Native SAP SDK Integration
+            </h3>
+            <p className="text-slate-400 leading-relaxed">
+              The add-on is implemented using the SAP Business One SDK,
+              interacting with both the UI API and DI API to integrate with
+              Sales Orders, Deliveries, and A/R Invoices while preserving
+              SAP's transaction lifecycle and document validation rules.
+            </p>
+          </div>
+
+          {/* PAYMENT PROCESSING */}
+          <div>
+            <h3 className="text-xl font-bold text-teal-400 mb-4 flex items-center">
+              <Shield className="mr-2" /> Secure Payment Processing
+            </h3>
+            <p className="text-slate-400 leading-relaxed">
+              Payment authorization and capture operations are performed through
+              the payment gateway using tokenized customer payment profiles.
+              ClickPay does not store raw card data within the ERP database.
+            </p>
+          </div>
+
+          {/* RELIABILITY */}
+          <div>
+            <h3 className="text-xl font-bold text-teal-400 mb-4 flex items-center">
+              <Cpu className="mr-2" /> Background Processing
+            </h3>
+            <p className="text-slate-400 leading-relaxed">
+              A background processing worker coordinates capture attempts,
+              retries, and reconciliation tasks to reduce the risk of duplicate
+              gateway transactions and improve operational resilience.
+            </p>
+          </div>
+
+          {/* SUMMARY */}
+          <div className="p-6 bg-slate-800 rounded-2xl border border-slate-700">
+            <h4 className="text-white font-bold mb-3">Technical Summary</h4>
+            <ul className="text-xs text-slate-400 space-y-2">
+              <li>• Compatible with Microsoft SQL Server and SAP HANA deployments</li>
+              <li>• Uses SAP User Defined Objects for configuration and logging</li>
+              <li>• Tokenized payment profiles handled by the payment gateway</li>
+              <li>• Immutable transaction logging for auditability</li>
+              <li>• Supports multi-currency SAP Business Partners</li>
+              <li>• Designed to operate entirely within the SAP Business One client</li>
+            </ul>
+          </div>
+
+        </div>
+
+        {/* RIGHT COLUMN */}
+        <div className="bg-slate-950 p-8 rounded-3xl border border-slate-800 shadow-2xl">
+          <div className="text-xs font-mono text-teal-400 space-y-2 overflow-x-auto">
+
+            <p className="opacity-50">// ClickPay Transaction Flow</p>
+
+            <p className="text-slate-400">
+              SAP Sales Order Created
+            </p>
+
+            <p>
+              → Authorize.Net AUTH_ONLY request
+            </p>
+
+            <p className="text-white">
+              {"<"}-- Authorization Approved (TransID: 99120)
+            </p>
+
+            <p className="text-slate-500">
+              Logging transaction in @CP_TX_LOG
+            </p>
+
+            <p className="text-slate-400">
+              SAP A/R Invoice Generated
+            </p>
+
+            <p>
+              → PRIOR_AUTH_CAPTURE request
+            </p>
+
+            <p className="text-white">
+              {"<"}-- Capture Successful
+            </p>
+
+            <p className="text-teal-500">
+              Payment state updated in SAP document
+            </p>
+
           </div>
         </div>
+
       </div>
     </div>
-  );
+  </div>
+);
 
   const Magento = () => (
     <div className="pt-32 pb-24 px-6 animate-in fade-in duration-500 bg-slate-950">
@@ -240,80 +462,204 @@ const App = () => {
   );
 
   const Migration = () => (
-    <div className="pt-32 pb-24 px-6 animate-in fade-in duration-500 bg-slate-950">
-      <div className="container mx-auto max-w-5xl text-center">
-        <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-6">Modernize Your Legacy Payments</h1>
-        <p className="text-slate-400 text-lg mb-12">Upgrade your SAP Business One payments without losing your existing customer profiles.</p>
-        <div className="bg-slate-900 p-12 rounded-3xl border border-slate-800 grid grid-cols-1 md:grid-cols-4 gap-8">
-           {[
-             { n: "1", t: "Identify", d: "Map legacy IDs to SAP Master Data" },
-             { n: "2", t: "Onboard", d: "Send secure links to clients" },
-             { n: "3", t: "Sync", d: "Create secure CIM profiles" },
-             { n: "4", t: "Live", d: "Linked and ready for processing" }
-           ].map((step, i) => (
-             <div key={i}>
-                <div className="w-12 h-12 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center mx-auto mb-4 text-teal-400 font-bold">{step.n}</div>
-                <h4 className="text-white font-bold mb-2 uppercase text-xs tracking-widest">{step.t}</h4>
-                <p className="text-[11px] text-slate-500">{step.d}</p>
-             </div>
-           ))}
-        </div>
+  <div className="pt-32 pb-24 px-6 animate-in fade-in duration-500 bg-slate-950">
+    <div className="container mx-auto max-w-5xl text-center">
+
+      <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-6">
+        Secure Customer Payment Onboarding
+      </h1>
+
+      <p className="text-slate-400 text-lg mb-12">
+        Transition customers to secure payment profiles through a guided onboarding process without handling sensitive card data inside SAP.
+      </p>
+
+      <div className="bg-slate-900 p-12 rounded-3xl border border-slate-800 grid grid-cols-1 md:grid-cols-4 gap-8">
+
+        {[
+          { n: "1", t: "Invite", d: "Send secure onboarding links to customer contacts." },
+          { n: "2", t: "Verify", d: "Customers access a secure onboarding portal." },
+          { n: "3", t: "Enroll", d: "Payment profiles created through Authorize.Net hosted forms." },
+          { n: "4", t: "Sync", d: "Profiles automatically linked to SAP Business Partners." }
+        ].map((step, i) => (
+          <div key={i}>
+            <div className="w-12 h-12 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center mx-auto mb-4 text-teal-400 font-bold">
+              {step.n}
+            </div>
+            <h4 className="text-white font-bold mb-2 uppercase text-xs tracking-widest">
+              {step.t}
+            </h4>
+            <p className="text-[11px] text-slate-500">
+              {step.d}
+            </p>
+          </div>
+        ))}
+
       </div>
+
     </div>
-  );
+  </div>
+);
 
   const Security = () => (
-    <div className="pt-32 pb-24 px-6 animate-in fade-in duration-500 bg-slate-900">
-       <div className="container mx-auto max-w-4xl">
-          <div className="text-center mb-12">
-            <ShieldCheck className="w-16 h-16 text-teal-400 mx-auto mb-6" />
-            <h1 className="text-4xl font-extrabold text-white mb-4">Security & Compliance</h1>
-            <p className="text-slate-400 italic">ClickPay never stores full credit card numbers or CVV in SAP Business One.</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-             <div className="bg-slate-800 p-8 rounded-2xl border border-slate-700">
-                <h4 className="text-white font-bold mb-3">PCI Scope Reduction</h4>
-                <p className="text-sm text-slate-400 leading-relaxed">By utilizing Authorize.Net's Hosted Profile pages, sensitive data never touches your network, drastically lowering audit complexity.</p>
-             </div>
-             <div className="bg-slate-800 p-8 rounded-2xl border border-slate-700">
-                <h4 className="text-white font-bold mb-3">Tokenized Vaulting</h4>
-                <p className="text-sm text-slate-400 leading-relaxed">Customer profiles are vaulted in the Authorize.Net CIM, providing secure access via alphanumeric tokens.</p>
-             </div>
-          </div>
-       </div>
+  <div className="pt-32 pb-24 px-6 animate-in fade-in duration-500 bg-slate-900">
+    <div className="container mx-auto max-w-4xl">
+
+      <div className="text-center mb-12">
+        <ShieldCheck className="w-16 h-16 text-teal-400 mx-auto mb-6" />
+
+        <h1 className="text-4xl font-extrabold text-white mb-4">
+          Security & Compliance Architecture
+        </h1>
+
+        <p className="text-slate-400 italic max-w-2xl mx-auto">
+          ClickPay is designed so sensitive card data is handled only by the payment gateway. 
+          Full credit card numbers and CVV values are never stored inside SAP Business One.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+        <div className="bg-slate-800 p-8 rounded-2xl border border-slate-700">
+          <h4 className="text-white font-bold mb-3">
+            PCI Scope Reduction
+          </h4>
+
+          <p className="text-sm text-slate-400 leading-relaxed">
+            ClickPay utilizes Authorize.Net hosted payment forms and customer profiles, 
+            allowing sensitive card data to be entered directly into the payment gateway. 
+            This architecture helps reduce PCI scope for SAP environments by avoiding the 
+            storage or transmission of raw card data within the ERP system.
+          </p>
+        </div>
+
+        <div className="bg-slate-800 p-8 rounded-2xl border border-slate-700">
+          <h4 className="text-white font-bold mb-3">
+            Tokenized Payment Profiles
+          </h4>
+
+          <p className="text-sm text-slate-400 leading-relaxed">
+            Customer payment methods are stored securely within the Authorize.Net 
+            Customer Information Manager (CIM). ClickPay interacts with these profiles 
+            using gateway-issued tokens rather than raw card data.
+          </p>
+        </div>
+
+        <div className="bg-slate-800 p-8 rounded-2xl border border-slate-700">
+          <h4 className="text-white font-bold mb-3">
+            Secure Transaction Logging
+          </h4>
+
+          <p className="text-sm text-slate-400 leading-relaxed">
+            Payment activity is recorded in SAP using transaction metadata such as 
+            authorization IDs, status codes, and timestamps. Sensitive payment data 
+            is not written to the ERP database.
+          </p>
+        </div>
+
+        <div className="bg-slate-800 p-8 rounded-2xl border border-slate-700">
+          <h4 className="text-white font-bold mb-3">
+            Gateway-Based Payment Processing
+          </h4>
+
+          <p className="text-sm text-slate-400 leading-relaxed">
+            Authorization and capture operations are performed through the payment 
+            gateway using tokenized customer profiles, allowing SAP Business One to 
+            coordinate payments without directly handling cardholder data.
+          </p>
+        </div>
+
+      </div>
+
     </div>
-  );
+  </div>
+);
 
   const Pricing = () => (
-    <div className="pt-32 pb-24 px-6 animate-in fade-in duration-500 bg-slate-900">
-       <div className="container mx-auto text-center max-w-5xl">
-          <h1 className="text-4xl font-extrabold text-white mb-6">Commercial Tiers</h1>
-          <p className="text-slate-400 text-lg mb-12">Flexible structures for end-users and SAP Value-Added Resellers.</p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
-             <div className="bg-slate-800 p-8 rounded-2xl border border-slate-700">
-                <h4 className="text-white font-bold text-xl mb-4">Standard</h4>
-                <p className="text-xs text-slate-400 mb-6">Core SAP Add-on for SQL or HANA.</p>
-                <ul className="text-sm text-slate-300 space-y-2">
-                   <li>• One-time implementation</li>
-                   <li>• Core Auth/Capture flows</li>
-                   <li>• Standard Maintenance</li>
-                </ul>
-             </div>
-             <div className="bg-slate-800 p-8 rounded-2xl border-2 border-teal-500 relative">
-                <div className="absolute -top-3 right-6 bg-teal-500 text-white text-[10px] px-2 py-1 rounded font-bold uppercase">Enterprise</div>
-                <h4 className="text-white font-bold text-xl mb-4">Omnichannel</h4>
-                <p className="text-xs text-slate-400 mb-6">Everything in Standard plus Magento plugin.</p>
-                <ul className="text-sm text-slate-300 space-y-2">
-                   <li>• Magento 2 Extension</li>
-                   <li>• Advanced Migration Support</li>
-                   <li>• Priority Technical Support</li>
-                </ul>
-             </div>
-        
+  <div className="pt-32 pb-24 px-6 animate-in fade-in duration-500 bg-slate-900">
+    <div className="container mx-auto text-center max-w-5xl">
+
+      <h1 className="text-4xl font-extrabold text-white mb-6">
+        Commercial Model
+      </h1>
+
+      <p className="text-slate-400 text-lg mb-12">
+        ClickPay is licensed as a SAP Business One add-on with flexible deployment options for end users and SAP Value-Added Resellers.
+      </p>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+
+        {/* CORE ADDON */}
+        <div className="bg-slate-800 p-8 rounded-2xl border border-slate-700">
+          <h4 className="text-white font-bold text-xl mb-4">
+            Core Add-On
+          </h4>
+
+          <p className="text-xs text-slate-400 mb-6">
+            Native SAP Business One payment integration.
+          </p>
+
+          <ul className="text-sm text-slate-300 space-y-2">
+            <li>• Sales Order authorization workflows</li>
+            <li>• Invoice-based payment capture</li>
+            <li>• Secure tokenized payment profiles</li>
+            <li>• Transaction logging and reconciliation</li>
+            <li>• Compatible with SQL Server and SAP HANA</li>
+          </ul>
+        </div>
+
+        {/* ENTERPRISE */}
+        <div className="bg-slate-800 p-8 rounded-2xl border-2 border-teal-500 relative">
+
+          <div className="absolute -top-3 right-6 bg-teal-500 text-white text-[10px] px-2 py-1 rounded font-bold uppercase">
+            Enterprise
           </div>
-       </div>
+
+          <h4 className="text-white font-bold text-xl mb-4">
+            Omnichannel
+          </h4>
+
+          <p className="text-xs text-slate-400 mb-6">
+            Extends ClickPay across ERP and ecommerce workflows.
+          </p>
+
+          <ul className="text-sm text-slate-300 space-y-2">
+            <li>• Magento integration options</li>
+            <li>• Shared payment profiles across channels</li>
+            <li>• Order-to-payment reconciliation</li>
+            <li>• Advanced onboarding and migration support</li>
+            <li>• Priority technical support</li>
+          </ul>
+        </div>
+
+        {/* IMPLEMENTATION */}
+        <div className="bg-slate-800 p-8 rounded-2xl border border-slate-700">
+          <h4 className="text-white font-bold text-xl mb-4">
+            Implementation
+          </h4>
+
+          <p className="text-xs text-slate-400 mb-6">
+            Delivered through SAP Business One partners.
+          </p>
+
+          <ul className="text-sm text-slate-300 space-y-2">
+            <li>• Gateway configuration</li>
+            <li>• Payment workflow setup</li>
+            <li>• Customer payment onboarding</li>
+            <li>• Migration planning and validation</li>
+            <li>• End-user training</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <p className="text-xs text-slate-500 mt-12 max-w-xl mx-auto">
+        Payment processing fees are billed directly by the payment gateway and merchant processor. 
+        ClickPay licensing and implementation services are provided separately through authorized partners.
+      </p>
+
     </div>
-  );
+  </div>
+);
 
   /**
    * ClickPay Marketing Showcase Section
@@ -439,7 +785,7 @@ const App = () => {
             icon={<Zap size={28} />}
             imageSrc="/PaymentHub.png"
             features={[
-              "One-Click Batch Voids",
+              "One-Click Pre-Auth. Voids",
               "Shipping-Synced Captures",
               "Partial Shipment Support",
               "Instant Status Sync"
@@ -531,6 +877,7 @@ const App = () => {
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/paymentupdate" element={<PaymentManage />} />
         <Route path="/emailsetup" element={<EmailSetupHelp />} />
+        <Route path="/workflow" element={<WorkFlow />} />
       </Routes>
 
       <Footer />
