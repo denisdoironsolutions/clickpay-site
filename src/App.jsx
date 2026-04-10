@@ -204,10 +204,7 @@ const App = () => {
               <CheckCircle2 className="text-blue-500 mr-2 shrink-0" />
               Reduces manual payment handling for finance teams.
             </li>
-            <li className="flex items-start">
-              <CheckCircle2 className="text-blue-500 mr-2 shrink-0" />
-              Helps accelerate cash collection by capturing funds at shipment.
-            </li>
+            
           </ul>
         </div>
 
@@ -266,10 +263,6 @@ const App = () => {
             <li className="flex items-start">
               <CheckCircle2 className="text-orange-500 mr-2 shrink-0" />
               Embedded directly into SAP Business One workflows.
-            </li>
-            <li className="flex items-start">
-              <CheckCircle2 className="text-orange-500 mr-2 shrink-0" />
-              Eliminates the need for external payment portals or disconnected systems.
             </li>
             <li className="flex items-start">
               <CheckCircle2 className="text-orange-500 mr-2 shrink-0" />
@@ -573,99 +566,241 @@ const App = () => {
     </div>
   </div>
 );
+const Pricing = () => {
+  return (
+    <div className="pt-32 pb-24 px-6 animate-in fade-in duration-700 bg-slate-900 selection:bg-teal-500/30">
+      <div className="container mx-auto max-w-6xl">
 
-  const Pricing = () => (
-  <div className="pt-32 pb-24 px-6 animate-in fade-in duration-500 bg-slate-900">
-    <div className="container mx-auto text-center max-w-5xl">
-
-      <h1 className="text-4xl font-extrabold text-white mb-6">
-        Commercial Model
-      </h1>
-
-      <p className="text-slate-400 text-lg mb-12">
-        ClickPay is licensed as a SAP Business One add-on with flexible deployment options for end users and SAP Value-Added Resellers.
-      </p>
-
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
-
-        {/* CORE ADDON */}
-        <div className="bg-slate-800 p-8 rounded-2xl border border-slate-700">
-          <h4 className="text-white font-bold text-xl mb-4">
-            Core Add-On
-          </h4>
-
-          <p className="text-xs text-slate-400 mb-6">
-            Native SAP Business One payment integration.
+        {/* Header Section */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-6 tracking-tight">
+            Licensing & Commercial Model
+          </h1>
+          <p className="text-slate-400 text-lg leading-relaxed">
+            ClickPay provides high-performance integration software for SAP Business One.
+            Our commercial model is designed to separate software licensing from third-party
+            gateway and merchant processing services.
           </p>
-
-          <ul className="text-sm text-slate-300 space-y-2">
-            <li>• Sales Order authorization workflows</li>
-            <li>• Invoice-based payment capture</li>
-            <li>• Secure tokenized payment profiles</li>
-            <li>• Transaction logging and reconciliation</li>
-            <li>• Compatible with SQL Server and SAP HANA</li>
-          </ul>
         </div>
 
-        {/* ENTERPRISE */}
-        <div className="bg-slate-800 p-8 rounded-2xl border-2 border-teal-500 relative">
+        {/* Product Tiers */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left mb-20">
 
-          <div className="absolute -top-3 right-6 bg-teal-500 text-white text-[10px] px-2 py-1 rounded font-bold uppercase">
-            Enterprise
+          {/* Core Card */}
+          <div className="bg-slate-800/50 p-8 rounded-2xl border border-slate-700 hover:border-slate-500 transition-colors">
+            <h4 className="text-white font-bold text-xl mb-1">Core Add-On</h4>
+            <div className="h-1 w-12 bg-teal-500 mb-6 rounded-full"></div>
+            <p className="text-xs text-slate-400 mb-6 min-h-[40px]">
+              Native SAP Business One payment integration for operational payment workflows.
+            </p>
+            <ul className="text-sm text-slate-300 space-y-3">
+              <li className="flex items-start gap-2">
+                <span className="text-teal-500 font-bold">•</span>
+                <span>Sales Order and Invoice payment workflows</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-teal-500 font-bold">•</span>
+                <span>Secure tokenized payment profiles</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-teal-500 font-bold">•</span>
+                <span>SQL Server and SAP HANA compatibility</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-teal-500 font-bold">•</span>
+                <span>Transaction logging and reconciliation visibility</span>
+              </li>
+            </ul>
           </div>
 
-          <h4 className="text-white font-bold text-xl mb-4">
-            Omnichannel
-          </h4>
+          {/* Enterprise Card */}
+          <div className="bg-slate-800 p-8 rounded-2xl border-2 border-teal-500 relative shadow-2xl shadow-teal-500/10 scale-105 z-10">
+            <div className="absolute -top-3 right-6 bg-teal-500 text-white text-[10px] px-3 py-1 rounded-full font-bold uppercase tracking-widest">
+              Enterprise
+            </div>
+            <h4 className="text-white font-bold text-xl mb-1">Omnichannel</h4>
+            <div className="h-1 w-12 bg-teal-500 mb-6 rounded-full"></div>
+            <p className="text-xs text-slate-400 mb-6 min-h-[40px]">
+              Extended capabilities for ERP, ecommerce, and higher-volume payment operations.
+            </p>
+            <ul className="text-sm text-slate-300 space-y-3">
+              <li className="flex items-start gap-2">
+                <span className="text-teal-500 font-bold">•</span>
+                <span>Level 2 and Level 3 capable workflows</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-teal-500 font-bold">•</span>
+                <span>Magento and webstore integration options</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-teal-500 font-bold">•</span>
+                <span>Cross-channel payment profile strategies</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-teal-500 font-bold">•</span>
+                <span>Priority migration and technical support</span>
+              </li>
+            </ul>
+          </div>
 
-          <p className="text-xs text-slate-400 mb-6">
-            Extends ClickPay across ERP and ecommerce workflows.
-          </p>
-
-          <ul className="text-sm text-slate-300 space-y-2">
-            <li>• Magento integration options</li>
-            <li>• Shared payment profiles across channels</li>
-            <li>• Order-to-payment reconciliation</li>
-            <li>• Advanced onboarding and migration support</li>
-            <li>• Priority technical support</li>
-          </ul>
+          {/* Professional Services Card */}
+          <div className="bg-slate-800/50 p-8 rounded-2xl border border-slate-700 hover:border-slate-500 transition-colors">
+            <h4 className="text-white font-bold text-xl mb-1">Implementation</h4>
+            <div className="h-1 w-12 bg-teal-500 mb-6 rounded-full"></div>
+            <p className="text-xs text-slate-400 mb-6 min-h-[40px]">
+              Deployment and configuration delivered through authorized SAP Business One partners.
+            </p>
+            <ul className="text-sm text-slate-300 space-y-3">
+              <li className="flex items-start gap-2">
+                <span className="text-teal-500 font-bold">•</span>
+                <span>Workflow and document mapping</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-teal-500 font-bold">•</span>
+                <span>Gateway setup and operational hardening</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-teal-500 font-bold">•</span>
+                <span>User Acceptance Testing and validation</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-teal-500 font-bold">•</span>
+                <span>Go-live support and post-launch review</span>
+              </li>
+            </ul>
+          </div>
         </div>
 
-        {/* IMPLEMENTATION */}
-        <div className="bg-slate-800 p-8 rounded-2xl border border-slate-700">
-          <h4 className="text-white font-bold text-xl mb-4">
-            Implementation
-          </h4>
+        {/* Educational Fee Section */}
+        <div className="bg-slate-800/80 p-10 rounded-3xl border border-slate-700 text-left backdrop-blur-sm">
+          <div className="flex flex-col md:flex-row gap-10">
+            <div className="flex-1">
+              <h3 className="text-white text-2xl font-bold mb-4">
+                Understanding Payment Costs
+              </h3>
+              <p className="text-slate-300 text-sm leading-7 mb-6">
+                Total payment acceptance cost is typically made up of separate services from
+                independent third parties. ClickPay provides software and integration services
+                for SAP Business One, but does not set or control gateway fees, merchant
+                processing fees, interchange, assessments, chargeback fees, or other
+                processor-imposed costs.
+              </p>
 
-          <p className="text-xs text-slate-400 mb-6">
-            Delivered through SAP Business One partners.
+              <div className="space-y-4">
+                <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-700">
+                  <h5 className="text-teal-400 text-xs font-bold uppercase mb-1">
+                    Software & Integration
+                  </h5>
+                  <p className="text-xs text-slate-400">
+                    Licensing for the ClickPay SAP Business One add-on, along with partner-led
+                    implementation, onboarding, and support services.
+                  </p>
+                </div>
+
+                <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-700">
+                  <h5 className="text-teal-400 text-xs font-bold uppercase mb-1">
+                    Gateway Services
+                  </h5>
+                  <p className="text-xs text-slate-400">
+                    Authorize.Net provides gateway functionality such as secure transaction
+                    routing, tokenization, and payment reporting. Gateway pricing is determined
+                    by Authorize.Net and/or the applicable account structure.
+                  </p>
+                </div>
+
+                <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-700">
+                  <h5 className="text-teal-400 text-xs font-bold uppercase mb-1">
+                    Merchant Processing
+                  </h5>
+                  <p className="text-xs text-slate-400">
+                    Merchant processing fees are charged by the acquiring bank, processor, or
+                    Merchant Service Provider under the merchant’s separate agreement.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex-1 bg-slate-900/40 p-8 rounded-2xl border border-slate-700/50">
+              <h4 className="text-white font-semibold mb-4 flex items-center gap-2">
+                <svg
+                  className="w-5 h-5 text-teal-500"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M13 10V3L4 14h7v7l9-11h-7z"
+                  />
+                </svg>
+                Cost Management Considerations
+              </h4>
+
+              <ul className="text-sm text-slate-300 space-y-4">
+                <li className="border-b border-slate-800 pb-3">
+                  <strong className="text-white block">Processor Fit Matters</strong>
+                  Businesses often compare providers based on transaction mix, average ticket
+                  size, card-present versus card-not-present volume, ecommerce requirements,
+                  and contract structure. The lowest advertised rate is not always the lowest
+                  total cost.
+                </li>
+
+                <li className="border-b border-slate-800 pb-3">
+                  <strong className="text-white block">Ask for Full Fee Disclosure</strong>
+                  Evaluate monthly gateway fees, per-transaction fees, processor markups,
+                  chargeback fees, refund-related fees, ACH fees, PCI/compliance fees, and
+                  any minimums or termination terms.
+                </li>
+
+                <li className="border-b border-slate-800 pb-3">
+                  <strong className="text-white block">Level 2 / Level 3 Data</strong>
+                  ClickPay can support enhanced transaction data for qualifying workflows.
+                  In some cases, this may help eligible transactions receive more favorable
+                  interchange treatment, subject to processor, network, and merchant account rules.
+                </li>
+
+                <li>
+                  <strong className="text-white block">Tokenization & Scope Reduction</strong>
+                  Use of customer profiles and tokenization helps reduce the amount of
+                  cardholder data handled directly within operational workflows.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* Legal Disclaimer Footer */}
+        <div className="mt-16 text-[10px] text-slate-500 uppercase tracking-widest leading-relaxed max-w-4xl mx-auto border-t border-slate-800 pt-8">
+          <p className="mb-4">
+            Legal Disclaimer: ClickPay is an independent software solution for the SAP Business One
+            environment. ClickPay is not a financial institution, payment processor, payment gateway,
+            merchant acquirer, or Merchant Service Provider. All gateway services, merchant account
+            services, processing rates, underwriting, and related terms are provided exclusively by
+            third-party providers under separate agreements.
           </p>
-
-          <ul className="text-sm text-slate-300 space-y-2">
-            <li>• Gateway configuration</li>
-            <li>• Payment workflow setup</li>
-            <li>• Customer payment onboarding</li>
-            <li>• Migration planning and validation</li>
-            <li>• End-user training</li>
-          </ul>
+          <p className="mb-4">
+            Any information provided on this page is for general educational purposes only and does
+            not constitute financial, legal, tax, or merchant processing advice. Pricing, fees,
+            features, underwriting criteria, and partner terms may change at any time without notice.
+          </p>
+          <p>
+            References to cost management, optimization, or potential savings describe general
+            operational considerations only and do not constitute a promise, warranty, or guarantee
+            of any specific rate, qualification outcome, or financial result. Final pricing and
+            account terms are determined solely by the applicable gateway provider, Merchant Service
+            Provider, processor, acquiring bank, and card network rules. SAP Business One is a
+            trademark of SAP SE. Authorize.Net is a registered trademark of CyberSource, a Visa company.
+          </p>
         </div>
 
       </div>
-
-      <p className="text-xs text-slate-500 mt-12 max-w-xl mx-auto">
-        Payment processing fees are billed directly by the payment gateway and merchant processor. 
-        ClickPay licensing and implementation services are provided separately through authorized partners.
-      </p>
-
     </div>
-  </div>
-);
+  );
+};
 
-  /**
-   * ClickPay Marketing Showcase Section
-   * Use these components inside your main landing page.
-   * Includes designated placeholders for screenshots and ROI breakdowns.
-   */
+ 
 
   const ROIStat = ({ label, value }) => (
     <div className="flex flex-col border-l-2 border-teal-500/30 pl-4 py-1">
@@ -818,14 +953,13 @@ const App = () => {
           {/* 3. SETTLEMENT HUB */}
           <MarketingShowcase
             title="Assisted Gateway Settlement"
-            subtitle="Synchronize settled gateway batches with SAP and generate G/L-ready journal entries — eliminating manual reconciliation steps without requiring bank integration."
+            subtitle="Synchronize settled gateway batches with SAP and generate Financial Transaction — eliminating manual reconciliation steps."
             icon={<Scale size={28} />}
             imageSrc="/SettlementHub.png"
             features={[
               "Gateway-to-SAP Batch Synchronization",
-              "Automated Fee Allocation (Gateway-Reported)",
-              "Batch Variance Detection & Alerts",
-              "Journal Entry Auto-Generation"
+              "Estimated Fee Allocation",
+              "Batch Variance Detection & Alerts"
             ]}
             roi={[
               { value: "Reduced", label: "Manual Reconciliation Time" }
